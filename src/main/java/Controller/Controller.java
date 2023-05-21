@@ -26,7 +26,7 @@ public class Controller {
     }
 
     private void gamePrint(ArrayList<Car> nameList, Output output, int arrive) {
-        for (int index = 0; index < 10; index++) {
+        for (int index = 0; index < nameList.size(); index++) {
             gameMove(nameList, output, arrive);
         }
         output.gameEnd(nameList, arrive);
