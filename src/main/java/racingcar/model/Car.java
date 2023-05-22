@@ -18,7 +18,14 @@ public class Car {
             throw new IllegalArgumentException("이름은 공백이 될 수 없습니다.");
         }
     }
+
     public int getPosition(){
         return position;
+    }
+
+    public void move(int power){
+        if(power >= 4){
+            position++;
+        }
     }
 }
