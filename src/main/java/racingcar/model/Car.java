@@ -2,9 +2,12 @@ package racingcar.model;
 
 public class Car {
     private final String name;
+    private int position;
+
     public Car(String name){
         validateName(name);
         this.name = name;
+        this.position = 0;
     }
 
     private void validateName(String name){
@@ -14,5 +17,8 @@ public class Car {
         if(name.isBlank() || name.length() == 0){
             throw new IllegalArgumentException("이름은 공백이 될 수 없습니다.");
         }
+    }
+    public int getPosition(){
+        return position;
     }
 }
