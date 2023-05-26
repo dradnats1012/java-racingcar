@@ -2,10 +2,13 @@ package racingcar.model;
 
 public class RandomNumberGenerator {
 
+    public RandomNumberGenerator(){
+        validateRandomNumber(createRandomNumber());
+    }
     public int createRandomNumber() {
         double num = Math.random();
         int randomNumber = (int) (num * 10);
-        validateRandomNumber(randomNumber);
+
 
         return randomNumber;
     }
