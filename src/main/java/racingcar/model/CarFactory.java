@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarFactory {
-    private String[] split(String names) {
-        String[] nameList = names.split(",");
-
-        return nameList;
-    }
 
     public List<Car> makeCar(String names) {
         List<Car> carList = new ArrayList<>();
@@ -20,5 +15,11 @@ public class CarFactory {
             carList.add(car);
         }
         return carList;
+    }
+
+    private String[] split(String names) {
+        String[] nameList = names.split(",");
+
+        return nameList;
     }
 }
