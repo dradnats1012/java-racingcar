@@ -2,39 +2,43 @@ package racingcar.view;
 
 import racingcar.message.ConsoleMessage;
 
-import java.io.Console;
 import java.util.Scanner;
 
 public class Input {
 
     Scanner sc = new Scanner(System.in);
+
     public String getNames() {
         System.out.println(ConsoleMessage.INPUT_CAR_NAME.getMessage());
-        String name = sc.next();
+        String name = sc.nextLine();
 
         return name;
     }
 
-    public void setGoal(){
+    public int setGoal() {
         System.out.println(ConsoleMessage.INPUT_GOAL_NUMBER.getMessage());
-        validateGoal(sc.nextLine());
+        String goal = sc.nextLine();
+        validateGoal(goal);
+
+        return Integer.parseInt(goal);
     }
-    public void validateGoal(String goal){
+
+    public void validateGoal(String goal) {
         validateInteger(goal);
         validateMinus(goal);
     }
 
-    private void validateMinus(String goal){
-        if (Integer.parseInt(goal) <= 0){
-            throw new IllegalArgumentException("0이하가 될 수 없습니다.");
+    private void validateMinus(String goal) {
+        if (Integer.parseInt(goal) <= 0) {
+            throw new IllegalArgumentException(ConsoleMessage.MINUS_NUMBER.getMessage());
         }
     }
 
-    private void validateInteger(String goal){
+    private void validateInteger(String goal) {
         try {
             Integer.parseInt(goal);
         } catch (NumberFormatException e) {
-            throw new RuntimeException("숫자가 아닙니다.");
+            throw new RuntimeException(ConsoleMessage.NOT_NUMBER.getMessage());
         }
     }
 }

@@ -1,12 +1,8 @@
 package racingcar.view;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.model.Car;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class InputTest {
 
@@ -17,10 +13,10 @@ class InputTest {
         assertThatThrownBy(() -> input.validateGoal("-1"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("0이하가 될 수 없습니다.");
-
     }
+
     @Test
-    void 도착지_문자열_검사(){
+    void 도착지_문자열_검사() {
         Input input = new Input();
 
         assertThatThrownBy(() -> input.validateGoal("테스트"))

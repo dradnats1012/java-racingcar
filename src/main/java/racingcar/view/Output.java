@@ -30,5 +30,33 @@ public class Output {
         return stateLength;
     }
 
+    public StringBuilder gameEnd(List<Car> carList, int goal) {
+        List<String> winner = checkWinner(carList, goal);
+        StringBuilder endMessage = new StringBuilder();
+
+        for (int index = 0; index < winner.size(); index++) {
+            endMessage.append(winner.get(index) + " ");
+        }
+        endMessage.append(OUTPUT_WINNER.getMessage());
+
+        return endMessage;
+    }
+
+    private List<String> checkWinner(List<Car> carList, int arrival) {
+        int length = carList.size();
+        List<String> winnerName = new ArrayList<>();
+
+        for (int index = 0; index < length; index++) {
+            compareState(carList.get(index), arrival, winnerName);
+        }
+        return winnerName;
+    }
+
+    private List compareState(Car car, int arrival, List<String> winnerName) {
+        if (car.getPosition() == arrival) {
+            winnerName.add(car.getName());
+        }
+        return winnerName;
+    }
 
 }
