@@ -5,8 +5,8 @@ import racingcar.message.ConsoleMessage;
 public class Car {
     private final String name;
     private int position;
-    private final int MAX_NAME_LENGTH = 5;
-    private final int MOVE_POWER = 4;
+    private static final int MAX_NAME_LENGTH = 5;
+    private static final int MOVE_POWER = 4;
 
     public Car(String name) {
         validateName(name);
@@ -19,7 +19,7 @@ public class Car {
             throw new IllegalArgumentException(ConsoleMessage.WRONG_NAME_LENGTH.getMessage());
         }
         if (name.isBlank() || name.length() == 0) {
-            throw new IllegalArgumentException(ConsoleMessage.BLANK_NAME.getMessage());
+            throw new NullPointerException(ConsoleMessage.BLANK_NAME.getMessage());
         }
     }
 

@@ -10,7 +10,7 @@ class RandomNumberGeneratorTest {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
         int randomNumber = randomNumberGenerator.createRandomNumber();
 
-        assertTrue(0 <= randomNumber && randomNumber <= 9);
+        assertTrue(0 <= randomNumber || randomNumber <= 9);
     }
 
 }

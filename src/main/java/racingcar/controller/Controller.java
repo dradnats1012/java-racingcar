@@ -10,9 +10,9 @@ import racingcar.view.Output;
 import java.util.List;
 
 public class Controller {
-    public static boolean GameFlag = true;
-    private static int goal;
-    private static List<Car> carList;
+    public  boolean GameFlag = true;
+    private int goal;
+    private List<Car> carList;
 
     public void gamePlay() {
         Output output = new Output();

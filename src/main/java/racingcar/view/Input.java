@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Input {
 
-    Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     public String getNames() {
         System.out.println(ConsoleMessage.INPUT_CAR_NAME.getMessage());
@@ -38,7 +38,7 @@ public class Input {
         try {
             Integer.parseInt(goal);
         } catch (NumberFormatException e) {
-            throw new RuntimeException(ConsoleMessage.NOT_NUMBER.getMessage());
+            throw new IllegalArgumentException(ConsoleMessage.NOT_NUMBER.getMessage());
         }
     }
 }
