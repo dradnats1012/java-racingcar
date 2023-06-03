@@ -37,7 +37,6 @@ class OutputTest {
 
         String expected = "pobi 가 최종 우승했습니다";
         String actual = String.valueOf(output.gameEnd(carList, 1));
-        ; // 예상되는 결과를 가져오는 메서드를 가정합니다.
 
         assertEquals(expected, actual);
     }

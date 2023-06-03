@@ -1,63 +1,25 @@
 package racingcar.controller;
 
-import racingcar.message.ConsoleMessage;
 import racingcar.model.Car;
-import racingcar.model.CarFactory;
-import racingcar.model.RandomNumberGenerator;
-import racingcar.view.Input;
+import racingcar.model.CarRandomNumberGenerator;
+import racingcar.model.Racing;
 import racingcar.view.Output;
 
 import java.util.List;
 
 public class Controller {
-    public  boolean GameFlag = true;
-    private int goal;
-    private List<Car> carList;
+    public List<Car> carList;
+    public Racing racing;
+
+    public Controller(Racing racing) {
+        this.racing = new Racing(carList, new CarRandomNumberGenerator());
+    }
 
     public void gamePlay() {
-        Output output = new Output();
+        carList = racing.inputCarGoal();
 
-        inputCarGoal();
-
-        while (GameFlag) {
-            carMoveCheck();
-            output.gameStatus(carList);
-            System.out.println();
+        while (racing.carMoveCheck(carList)) {
         }
-        exitGame();
-    }
-
-    private void exitGame() {
-        Output output = new Output();
-
-        System.out.println(ConsoleMessage.GAME_RESULT.getMessage());
-        printWinner(carList, output, goal);
-    }
-
-    private void carMoveCheck() {
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        for (int index = 0; index < carList.size(); index++) {
-            carList.get(index).move(randomNumberGenerator.createRandomNumber());
-            checkEnd(carList.get(index), goal);
-        }
-    }
-
-    private void inputCarGoal() {
-        CarFactory carFactory = new CarFactory();
-        Input input = new Input();
-
-        String cars = input.getNames();
-        carList = carFactory.makeCar(cars);
-        goal = input.setGoal();
-    }
-
-    private void checkEnd(Car car, int goal) {
-        if (car.getPosition() == goal) {
-            GameFlag = false;
-        }
-    }
-
-    private void printWinner(List<Car> carList, Output output, int goal) {
-        System.out.println(output.gameEnd(carList, goal));
+        racing.exitGame();
     }
 }

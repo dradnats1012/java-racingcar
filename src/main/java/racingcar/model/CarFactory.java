@@ -1,5 +1,7 @@
 package racingcar.model;
 
+import racingcar.RandomNumberGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,5 +23,12 @@ public class CarFactory {
         String[] nameList = names.split(",");
 
         return nameList;
+    }
+
+    public void moveAll(final RandomNumberGenerator generator, List<Car> carList) {
+        for (Car car : carList) {
+            int power = generator.createRandomNumber();
+            car.move(power);
+        }
     }
 }

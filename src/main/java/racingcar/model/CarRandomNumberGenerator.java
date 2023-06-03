@@ -1,20 +1,19 @@
 package racingcar.model;
 
-public class RandomNumberGenerator {
+import racingcar.RandomNumberGenerator;
 
-    public RandomNumberGenerator() {
+public class CarRandomNumberGenerator implements RandomNumberGenerator {
+
+    public CarRandomNumberGenerator() {
         validateRandomNumber(createRandomNumber());
     }
 
     public int createRandomNumber() {
-        double num = Math.random();
-        int randomNumber = (int) (num * 10);
-
-        return randomNumber;
+        return (int) (Math.random() * 10);
     }
 
     private void validateRandomNumber(int randomNumber) {
-        if (0 > randomNumber && randomNumber > 9) {
+        if (0 > randomNumber || randomNumber > 9) {
             throw new IllegalArgumentException();
         }
     }

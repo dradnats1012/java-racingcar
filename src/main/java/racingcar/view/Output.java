@@ -15,6 +15,7 @@ public class Output {
             System.out.print(carList.get(index).getName() + " : ");
             printPosition(carList.get(index));
         }
+        System.out.println("");
     }
 
     private void printPosition(Car car) {
