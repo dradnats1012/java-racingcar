@@ -10,10 +10,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OutputTest {
+    private List<Car> carList;
+    private Input input;
+    public OutputTest(){
+        this.input = new Input();
+    }
     @Test
     void 상태_출력_테스트() {
         CarFactory carFactory = new CarFactory();
-        Output output = new Output();
+        Output output = new Output(carList);
         List<Car> carList = carFactory.makeCar("pobi,crong");
 
         carList.get(0).move(4);
@@ -29,29 +34,30 @@ class OutputTest {
     @Test
     void 승자_검사_테스트() {
         CarFactory carFactory = new CarFactory();
-        Output output = new Output();
+        carList = input.inputCar();
         List<Car> carList = carFactory.makeCar("pobi,crong");
+        Output output = new Output(carList);
 
         carList.get(0).move(4);
 
-
         String expected = "pobi 가 최종 우승했습니다";
-        String actual = String.valueOf(output.gameEnd(carList, 1));
+        String actual = String.valueOf(output.printWinner(carList));
 
         assertEquals(expected, actual);
     }
 
     @Test
     void 공동_승자_검사_테스트() {
+        carList = input.inputCar();
         CarFactory carFactory = new CarFactory();
-        Output output = new Output();
         List<Car> carList = carFactory.makeCar("pobi,crong");
+        Output output = new Output(carList);
 
         carList.get(0).move(4);
         carList.get(1).move(4);
 
         String expected = "pobi crong 가 최종 우승했습니다";
-        String actual = String.valueOf(output.gameEnd(carList, 1));
+        String actual = String.valueOf(output.printWinner(carList));
 
         assertEquals(expected, actual);
     }

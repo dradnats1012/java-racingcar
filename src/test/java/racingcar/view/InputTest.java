@@ -10,7 +10,7 @@ class InputTest {
     void 도착지_음수_검사() {
         Input input = new Input();
 
-        assertThatThrownBy(() -> input.validateGoal("-1"))
+        assertThatThrownBy(() -> input.validateTrial("-1"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("0이하가 될 수 없습니다.");
     }
@@ -19,7 +19,7 @@ class InputTest {
     void 도착지_문자열_검사() {
         Input input = new Input();
 
-        assertThatThrownBy(() -> input.validateGoal("테스트"))
+        assertThatThrownBy(() -> input.validateTrial("테스트"))
                 .isInstanceOf(RuntimeException.class)
                 .hasMessage("숫자가 아닙니다.");
     }

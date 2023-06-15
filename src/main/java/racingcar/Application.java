@@ -11,8 +11,8 @@ public class Application {
     public static RandomNumberGenerator randomNumberGenerator;
 
     public static void main(String[] args) {
-        Racing racingGame = new Racing(carList, randomNumberGenerator);
-        Controller controller = new Controller(racingGame);
-        controller.gamePlay();
+        Controller controller = new Controller();
+        controller.run();
+        //controller.gamePlay();
     }
 }

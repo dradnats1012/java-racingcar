@@ -19,7 +19,7 @@ public class Car {
             throw new IllegalArgumentException(ConsoleMessage.WRONG_NAME_LENGTH.getMessage());
         }
         if (name.isBlank() || name.length() == 0) {
-            throw new NullPointerException(ConsoleMessage.BLANK_NAME.getMessage());
+            throw new IllegalArgumentException(ConsoleMessage.BLANK_NAME.getMessage());
         }
     }
 
