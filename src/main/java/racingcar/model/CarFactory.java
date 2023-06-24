@@ -1,27 +1,13 @@
 package racingcar.model;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CarFactory {
-
     public List<Car> makeCar(String names) {
-        List<Car> carList = new ArrayList<>();
-        String[] nameList = split(names);
-
-        for (int index = 0; index < nameList.length; index++) {
-            String carName = nameList[index];
-            Car car = new Car(carName);
-            carList.add(car);
-        }
-        return carList;
+        return Arrays.stream(names.split(","))
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
-
-    private String[] split(String names) {
-        String[] nameList = names.split(",");
-
-        return nameList;
-    }
-
-
 }

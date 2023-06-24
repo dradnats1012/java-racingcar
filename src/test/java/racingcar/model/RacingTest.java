@@ -31,21 +31,6 @@ class RacingTest {
 
     @Test
     void 플레이를_호출하면_모든_자동차_위치_멈춤() {
-        /*int tryCount = 0;
-        CarFactory carFactory = new CarFactory();
-        List<Car> carList = carFactory.makeCar(carNames);
-
-        Racing racing = new Racing( new NeverMoveGenerator(), carList, tryCount);
-        racing.play();
-        List<Integer> positions = new ArrayList<>();
-
-        //Assertions.assertThat(carList).hasSize(3);
-
-        for (Car car : carList) {
-            positions.add(car.getPosition());
-        }
-
-        Assertions.assertThat(positions).containsOnly(tryCount);*/
         int tryCount = 1;
         CarFactory carFactory = new CarFactory();
         List<Car> carList = carFactory.makeCar(carNames);
@@ -60,22 +45,19 @@ class RacingTest {
 
         Assertions.assertThat(positions).containsOnly(0);
     }
-    private static class AlwaysMoveGenerator implements RandomNumberGenerator {
 
+    private static class AlwaysMoveGenerator implements RandomNumberGenerator {
         @Override
         public int createRandomNumber() {
             return 4;
         }
-
     }
 
     private static class NeverMoveGenerator implements RandomNumberGenerator {
-
         @Override
         public int createRandomNumber() {
             return 0;
         }
-
     }
 
     @Override

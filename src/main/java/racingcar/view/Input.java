@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Input {
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
     private List<Car> carList;
 
     public List<Car> inputCar() {
@@ -21,9 +21,7 @@ public class Input {
 
     public String getNames() {
         System.out.println(ConsoleMessage.INPUT_CAR_NAME.getMessage());
-        String name = sc.nextLine();
-
-        return name;
+        return sc.nextLine();
     }
 
     public int setTrial() {

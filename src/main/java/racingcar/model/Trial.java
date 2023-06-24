@@ -3,7 +3,7 @@ package racingcar.model;
 public class Trial {
     private int count;
 
-    Trial(int count){
+    public Trial(int count) {
         validateCount(count);
         this.count = count;
     }

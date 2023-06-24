@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OutputTest {
-    private List<Car> carList;
     private Input input;
     public OutputTest(){
         this.input = new Input();
@@ -18,7 +17,7 @@ class OutputTest {
     @Test
     void 상태_출력_테스트() {
         CarFactory carFactory = new CarFactory();
-        Output output = new Output(carList);
+        Output output = new Output();
         List<Car> carList = carFactory.makeCar("pobi,crong");
 
         carList.get(0).move(4);
@@ -34,9 +33,8 @@ class OutputTest {
     @Test
     void 승자_검사_테스트() {
         CarFactory carFactory = new CarFactory();
-        carList = input.inputCar();
         List<Car> carList = carFactory.makeCar("pobi,crong");
-        Output output = new Output(carList);
+        Output output = new Output();
 
         carList.get(0).move(4);
 
@@ -48,10 +46,9 @@ class OutputTest {
 
     @Test
     void 공동_승자_검사_테스트() {
-        carList = input.inputCar();
         CarFactory carFactory = new CarFactory();
         List<Car> carList = carFactory.makeCar("pobi,crong");
-        Output output = new Output(carList);
+        Output output = new Output();
 
         carList.get(0).move(4);
         carList.get(1).move(4);

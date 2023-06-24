@@ -9,18 +9,13 @@ import java.util.List;
 import static racingcar.message.ConsoleMessage.OUTPUT_WINNER;
 
 public class Output {
-    private List<Car> carList;
-
-    public Output(List<Car> carList) {
-        this.carList = carList;
-    }
 
     public void gameStatus(List<Car> carList) {
         int length = carList.size();
 
-        for (int index = 0; index < length; index++) {
-            System.out.print(carList.get(index).getName() + " : ");
-            printPosition(carList.get(index));
+        for (Car car : carList) {
+            System.out.print(car.getName() + " : ");
+            printPosition(car);
         }
         System.out.println("");
     }
@@ -34,12 +29,11 @@ public class Output {
     }
 
     private int carState(Car car) {
-        int stateLength = car.getPosition();
-        return stateLength;
+        return car.getPosition();
     }
 
 
-    public void exitGame() {
+    public void exitGame(List<Car> carList) {
         System.out.println(ConsoleMessage.GAME_RESULT.getMessage());
         gameEnd(carList);
     }
@@ -54,8 +48,8 @@ public class Output {
         StringBuilder endMessage = new StringBuilder();
 
 
-        for (int index = 0; index < winner.size(); index++) {
-            endMessage.append(winner.get(index) + " ");
+        for (String s : winner) {
+            endMessage.append(s).append(" ");
         }
         endMessage.append(OUTPUT_WINNER.getMessage());
 
@@ -66,9 +60,9 @@ public class Output {
         int length = carList.size();
         int winPosition = 0;
 
-        for (int index = 0; index < length; index++) {
-            if (carList.get(index).getPosition() > winPosition) {
-                winPosition = carList.get(index).getPosition();
+        for (Car car : carList) {
+            if (car.getPosition() > winPosition) {
+                winPosition = car.getPosition();
             }
         }
         return winPosition;
@@ -78,17 +72,16 @@ public class Output {
         int length = carList.size();
         List<String> winnerList = new ArrayList<>();
 
-        for (int index = 0; index < length; index++) {
-            compareState(carList.get(index), winnerList, winPosition);
+        for (Car car : carList) {
+            compareState(car, winnerList, winPosition);
         }
         return winnerList;
     }
 
-    private List compareState(Car car, List<String> winnerName, int winPosition) {
+    private void compareState(Car car, List<String> winnerName, int winPosition) {
         if (car.getPosition() == winPosition) {
             winnerName.add(car.getName());
         }
-        return winnerName;
     }
 
 }
